@@ -1,32 +1,29 @@
-# A2UI Login Page Prototype
+# A2UI Governed Workflow Prototype
 
-This is a narrow A2UI research spike, not a production auth system. The login form is a fixed A2UI `v0.9.1` message stream rendered by the official `@a2ui/react` renderer.
+This prototype demonstrates an A2UI `v0.9.1` surface with a dynamic order list, row actions, host-enforced role permissions, localization, conditional form fields, and interdependent form values.
 
 ## Run
 
 ```bash
+pnpm install
 pnpm dev
 ```
 
-## Demo Credentials
+## Verify
 
-```text
-Email: demo@example.com
-Password: password123
-```
+1. Switch between Viewer, Editor, and Manager. Row actions and the create form change, while the host still authorizes every action.
+2. Switch between English and Spanish. A2UI component labels and order status labels update without replacing the React host.
+3. Select Delivery. The address field appears; select Pickup and it disappears.
+4. Change Quantity or Unit price. Calculated total and approval guidance update immediately.
+5. Create, approve, view, and delete orders. The host audit panel records allowed and denied operations.
 
-## What to Verify
+## Documentation
 
-1. The **Protocol parse** check passes and the login form appears.
-2. Type in the email/password fields or toggle **Remember me**. The **Bound inputs** check should pass.
-3. Click **Login** with empty or wrong credentials. The host receives the A2UI action and sends validation errors back through `updateComponents`.
-4. Click **Login** with the demo credentials. The host accepts the action and sends a success message back through `updateDataModel`.
-5. Click **Reset demo** to clear the A2UI data model and validation state.
+- [Architecture](docs/architecture.md)
+- [Engineering guidelines](docs/engineering_guidelines.md)
+- [Module blueprint](docs/module_blueprint.md)
+- [Agent context](docs/agent_context.md)
 
-## Explicitly Not Included
+## Boundaries
 
-- No real authentication backend
-- No token/session storage
-- No AI-generated A2UI messages
-- No custom component catalog or renderer
-- No registry, version resolver, API gateway, or production security layer
+This remains a local protocol prototype. It has no backend, database, authentication provider, durable audit store, or AI-generated message transport. The host-side policy checks model where production authorization belongs, but they are not a replacement for server authorization.

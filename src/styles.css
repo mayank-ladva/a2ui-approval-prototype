@@ -35,6 +35,28 @@ button, input, textarea { font: inherit; }
 
 .a2ui-renderer { max-width: 660px; margin: 0 auto; padding: 4px; }
 .login-renderer { max-width: 460px; }
+.workflow-shell { max-width: 1480px; }
+.workflow-workspace { grid-template-columns: minmax(680px, 1fr) minmax(280px, .34fr); margin-top: 32px; }
+.workflow-renderer {
+  max-width: none;
+  --a2ui-card-margin: 0;
+  --a2ui-card-padding: 24px;
+  --a2ui-row-gap: 10px;
+  --a2ui-column-gap: 16px;
+  --a2ui-list-gap: 4px;
+  --a2ui-button-margin: 0;
+  --a2ui-divider-spacing: 10px;
+}
+.workflow-renderer button { margin-top: 0; padding: 7px 8px; white-space: nowrap; font-size: .84rem; }
+.workflow-renderer input, .workflow-renderer textarea { margin-bottom: 8px; }
+.workflow-audit { max-height: 900px; }
+.audit-list { display: grid; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
+.audit-entry { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 12px; border: 1px solid #dce4f2; border-radius: 10px; background: #f8faff; }
+.audit-entry strong { font-size: .82rem; }
+.audit-entry span { grid-column: 1 / -1; color: #58667d; font-size: .82rem; line-height: 1.4; }
+.audit-entry small { grid-column: 2; grid-row: 1; color: #7a879b; }
+.audit-entry.allowed { border-color: #9ed8b4; background: #f2fbf5; }
+.audit-entry.denied { border-color: #efb4b4; background: #fff4f4; }
 .a2ui-renderer .a2ui-card { padding: 25px; border: 1px solid #d9e1ef; border-radius: 14px; background: #fbfcff; box-shadow: 0 8px 22px rgba(31, 54, 95, .06); }
 .a2ui-renderer .a2ui-card > * { width: 100%; }
 .a2ui-renderer [style*="space-between"] { gap: 18px; }
@@ -61,6 +83,12 @@ pre { margin: 12px 0 20px; padding: 14px; overflow: auto; border-radius: 10px; b
   .panel-heading { align-items: flex-start; flex-direction: column; }
   .intro h1 { font-size: 2.15rem; }
   .panel-actions { justify-content: flex-start; }
+}
+
+@media (max-width: 1050px) {
+  .workflow-workspace { grid-template-columns: 1fr; }
+  .workflow-renderer { overflow-x: auto; }
+  .workflow-renderer .a2ui-card { min-width: 720px; }
 }
 
 @media (max-width: 1100px) {
